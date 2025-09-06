@@ -1,0 +1,61 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Регистрация - ПроектСтрой{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="content-block">
+            <div class="text-content">
+                <h2>Регистрация</h2>
+                <p>Создайте аккаунт для доступа к дополнительным возможностям</p>
+
+                {% if messages %}
+                <div style="margin-bottom: 1rem;">
+                    {% for message in messages %}
+                    <div style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="contact-form">
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                    <div style="color: red; margin-bottom: 1rem;">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="id_username">Имя пользователя *</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password1">Пароль *</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password2">Подтверждение пароля *</label>
+                        {{ form.password2 }}
+                    </div>
+                    <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                </form>
+                <p style="margin-top: 1rem; text-align: center;">
+                    Уже есть аккаунт? <a href="{% url 'login' %}" style="color: #2c5282;">Войдите</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

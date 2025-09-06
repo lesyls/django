@@ -1,0 +1,231 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Строительство будущего</h1>
+            <p>Профессиональные строительные услуги от надежной компании</p>
+            <a href="#contact" class="cta-button">Получить консультацию</a>
+        </div>
+        <div class="scroll-down">
+            <div class="scroll-down-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="content-block">
+                <div class="text-content">
+                    <h2>О нашей компании</h2>
+                    <p>ПроектСтрой - это команда профессионалов с многолетним опытом в строительной отрасли. Мы специализируемся на реализации сложных проектов любой масштабности.</p>
+                    <p>Наша миссия - создавать качественные и надежные строительные объекты, которые служат десятилетиями.</p>
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                        <li>Более 15 лет на рынке</li>
+                        <li>100+ успешных проектов</li>
+                        <li>Квалифицированные специалисты</li>
+                        <li>Современные технологии</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="О компании">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section section-dark">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Комплексные решения для вашего проекта</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Строительство домов</h3>
+                    <p>Полный цикл строительства частных и многоквартирных домов</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Коммерческое строительство</h3>
+                    <p>Офисные здания, торговые центры, производственные помещения</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Ремонт и реконструкция</h3>
+                    <p>Капитальный ремонт и модернизация существующих объектов</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📐</div>
+                    <h3>Проектирование</h3>
+                    <p>Архитектурное и инженерное проектирование любой сложности</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buildings Section -->
+    <section id="buildings" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши постройки</h2>
+                <p>Реализованные проекты, которыми мы гордимся</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ЖК Северный" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">ЖК "Северный"</h3>
+                        <p class="project-location">📍 Москва, Северный округ</p>
+                        <div class="project-features">
+                            <span class="project-feature">24 этажа</span>
+                            <span class="project-feature">300 квартир</span>
+                        </div>
+                        <p>Современный жилой комплекс с развитой инфраструктурой и подземным паркингом.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Бизнес-центр" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Бизнес-центр "Столичный"</h3>
+                        <p class="project-location">📍 Москва, центр</p>
+                        <div class="project-features">
+                            <span class="project-feature">18 этажей</span>
+                            <span class="project-feature">A класс</span>
+                        </div>
+                        <p>Элитный бизнес-центр с современными офисами и конференц-залами.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://static.tildacdn.com/tild6139-6464-4566-a464-626230396530/photo_2024-11-05_11-.jpg" alt="Коттеджный поселок" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Проект Мидгард</h3>
+                        <p class="project-location">📍 Московская область</p>
+                        <div class="project-features">
+                            <span class="project-feature">9 980 000 ₽</span>
+                            <span class="project-feature">142 м²</span>
+                        </div>
+                        <p>Идеальный загородный дом — минимальная площадь, максимум комфорта.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://optim.tildacdn.com/tild3533-6362-4438-a363-316161366239/-/format/webp/_1.jpg.webp" alt="Торговый центр" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">ТРЦ "Галактика"</h3>
+                        <p class="project-location">📍 Москва, ЮАО</p>
+                        <div class="project-features">
+                            <span class="project-feature">3 этажа</span>
+                            <span class="project-feature">200 магазинов</span>
+                        </div>
+                        <p>Крупный торгово-развлекательный центр с кинотеатром и фуд-кортом.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Школа" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Школа №1234</h3>
+                        <p class="project-location">📍 Москва, ЗАО</p>
+                        <div class="project-features">
+                            <span class="project-feature">4 этажа</span>
+                            <span class="project-feature">1000 учащихся</span>
+                        </div>
+                        <p>Современное образовательное учреждение с лабораториями и спортивным комплексом.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Загородный дом" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Особняк "Рублевка"</h3>
+                        <p class="project-location">📍 Московская область</p>
+                        <div class="project-features">
+                            <span class="project-feature">2 этажа</span>
+                            <span class="project-feature">бассейн</span>
+                        </div>
+                        <p>Элитный загородный дом с собственной территорией и современным дизайном.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-dark">
+        <div class="container">
+            <div class="content-block reverse">
+                <div class="text-content">
+                    <h2>Наши проекты</h2>
+                    <p>Мы гордимся каждым реализованным проектом. От небольших частных домов до крупных коммерческих комплексов - каждый объект строится с максимальным вниманием к деталям.</p>
+                    <p>Используем только качественные материалы и современные технологии строительства.</p>
+                    <a href="#contact" class="cta-button" style="margin-top: 1rem;">Обсудить проект</a>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Наши проекты">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь с нами</h2>
+                <p>Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
+            </div>
+            
+            <div class="content-block">
+                <div class="text-content">
+                    <h3>Наши контакты</h3>
+                    <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+                    <p><strong>Email:</strong> info@proektstroy.ru</p>
+                    <p><strong>Адрес:</strong> г. Москва, ул. Строителей, 123</p>
+                    <p><strong>Режим работы:</strong> Пн-Пт: 9:00-18:00</p>
+                </div>
+                
+                <div class="contact-form">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Интересующая услуга</label>
+                            <select id="service" name="service">
+                                <option value="">Выберите услугу</option>
+                                <option value="house">Строительство домов</option>
+                                <option value="commercial">Коммерческое строительство</option>
+                                <option value="renovation">Ремонт и реконструкция</option>
+                                <option value="design">Проектирование</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Опишите ваш проект..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

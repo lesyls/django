@@ -1,0 +1,39 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Вход - ПроектСтрой{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="content-block">
+            <div class="text-content">
+                <h2>Вход в аккаунт</h2>
+                <p>Войдите в свой аккаунт для доступа к персональным возможностям</p>
+
+                {% if form.errors %}
+                <div style="color: red; margin-bottom: 1rem;">
+                    <p>Неверное имя пользователя или пароль.</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="contact-form">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_username">Имя пользователя *</label>
+                        <input type="text" name="username" id="id_username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password">Пароль *</label>
+                        <input type="password" name="password" id="id_password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Войти</button>
+                </form>
+                <p style="margin-top: 1rem; text-align: center;">
+                    Нет аккаунта? <a href="{% url 'register' %}" style="color: #2c5282;">Зарегистрируйтесь</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
