@@ -21,10 +21,12 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home_page, name='home'),
+    path('', views.home_view, name='home'),
+
+    path('', include('myapp.urls')),
 
     # Auth URLs
     path('login/', auth_views.LoginView.as_view(template_name='myapp/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
-    path('register/', views.register, name='register'),
+    path('register/', views.register_view, name='register'),
 ]

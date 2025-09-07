@@ -2,11 +2,10 @@
 {% load static %}
 
 {% block content %}
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Строительство будущего</h1>
-            <p>Профессиональные строительные услуги от надежной компании</p>
+            <h1>ЗАГОРОДНЫЕ ДОМА ИЗ БРУСА</h1>
+            <h2><p>Мы строим экологичные дома под ключ для вашей семьи</p></h2>
             <a href="#contact" class="cta-button">Получить консультацию</a>
         </div>
         <div class="scroll-down">
@@ -20,7 +19,7 @@
             <div class="content-block">
                 <div class="text-content">
                     <h2>О нашей компании</h2>
-                    <p>ПроектСтрой - это команда профессионалов с многолетним опытом в строительной отрасли. Мы специализируемся на реализации сложных проектов любой масштабности.</p>
+                    <p>ПроектСтрой - это команда профессионалов с многолетним опытом в строительной отрасли. Мы специализируемся на реализации сложных проектов любой масшабности.</p>
                     <p>Наша миссия - создавать качественные и надежные строительные объекты, которые служат десятилетиями.</p>
                     <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
                         <li>Более 15 лет на рынке</li>
@@ -77,84 +76,145 @@
                 <p>Реализованные проекты, которыми мы гордимся</p>
             </div>
 
-            <div class="projects-grid">
+            <div class="buildings-grid">
+                <!-- Проект 1 -->
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ЖК Северный" class="project-image">
+                    <img src="https://optim.tildacdn.com/tild3533-6362-4438-a363-316161366239/-/format/webp/_1.jpg.webp" alt="Проект Вереск" class="project-image">
                     <div class="project-content">
-                        <h3 class="project-title">ЖК "Северный"</h3>
-                        <p class="project-location">📍 Москва, Северный округ</p>
-                        <div class="project-features">
-                            <span class="project-feature">24 этажа</span>
-                            <span class="project-feature">300 квартир</span>
-                        </div>
-                        <p>Современный жилой комплекс с развитой инфраструктурой и подземным паркингом.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Бизнес-центр" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Бизнес-центр "Столичный"</h3>
-                        <p class="project-location">📍 Москва, центр</p>
-                        <div class="project-features">
-                            <span class="project-feature">18 этажей</span>
-                            <span class="project-feature">A класс</span>
-                        </div>
-                        <p>Элитный бизнес-центр с современными офисами и конференц-залами.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://static.tildacdn.com/tild6139-6464-4566-a464-626230396530/photo_2024-11-05_11-.jpg" alt="Коттеджный поселок" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Проект Мидгард</h3>
+                        <h3 class="project-title">Мидгард</h3>
                         <p class="project-location">📍 Московская область</p>
                         <div class="project-features">
                             <span class="project-feature">9 980 000 ₽</span>
-                            <span class="project-feature">142 м²</span>
+                            <span class="project-feature">138 м²</span>
                         </div>
                         <p>Идеальный загородный дом — минимальная площадь, максимум комфорта.</p>
+                        <button class="detail-button" data-modal="modal-veresk">Подробнее</button>
                     </div>
                 </div>
 
+                <!-- Проект 2 -->
                 <div class="project-card">
-                    <img src="https://optim.tildacdn.com/tild3533-6362-4438-a363-316161366239/-/format/webp/_1.jpg.webp" alt="Торговый центр" class="project-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Проект Сосна" class="project-image">
                     <div class="project-content">
-                        <h3 class="project-title">ТРЦ "Галактика"</h3>
-                        <p class="project-location">📍 Москва, ЮАО</p>
+                        <h3 class="project-title">Реикамо</h3>
+                        <p class="project-location">📍 Ленинградская область</p>
                         <div class="project-features">
-                            <span class="project-feature">3 этажа</span>
-                            <span class="project-feature">200 магазинов</span>
+                            <span class="project-feature">12 500 000 ₽</span>
+                            <span class="project-feature">156 м²</span>
                         </div>
-                        <p>Крупный торгово-развлекательный центр с кинотеатром и фуд-кортом.</p>
+                        <p>Просторный дом для большой семьи с современной планировкой.</p>
+                        <button class="detail-button" data-modal="modal-sosna">Подробнее</button>
                     </div>
                 </div>
 
+                <!-- Проект 3 -->
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Школа" class="project-image">
+                    <img src="https://optim.tildacdn.com/tild6139-6464-4566-a464-626230396530/-/format/webp/photo_2024-11-05_11-.jpg.webp" alt="Проект Ель" class="project-image">
                     <div class="project-content">
-                        <h3 class="project-title">Школа №1234</h3>
-                        <p class="project-location">📍 Москва, ЗАО</p>
+                        <h3 class="project-title">Скальд</h3>
+                        <p class="project-location">📍 Калужская область</p>
                         <div class="project-features">
-                            <span class="project-feature">4 этажа</span>
-                            <span class="project-feature">1000 учащихся</span>
+                            <span class="project-feature">8 200 000 ₽</span>
+                            <span class="project-feature">125 м²</span>
                         </div>
-                        <p>Современное образовательное учреждение с лабораториями и спортивным комплексом.</p>
+                        <p>Компактный и уютный дом с энергоэффективными решениями.</p>
+                        <button class="detail-button" data-modal="modal-el">Подробнее</button>
                     </div>
                 </div>
 
+                <!-- Проект 4 -->
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Загородный дом" class="project-image">
+                    <img src="https://static.tildacdn.com/tild3862-3863-4436-b233-633539663636/photo.jpg" alt="Проект Кедр" class="project-image">
                     <div class="project-content">
-                        <h3 class="project-title">Особняк "Рублевка"</h3>
-                        <p class="project-location">📍 Московская область</p>
+                        <h3 class="project-title">Кедр</h3>
+                        <p class="project-location">📍 Тверская область</p>
                         <div class="project-features">
-                            <span class="project-feature">2 этажа</span>
-                            <span class="project-feature">бассейн</span>
+                            <span class="project-feature">15 800 000 ₽</span>
+                            <span class="project-feature">185 м²</span>
                         </div>
-                        <p>Элитный загородный дом с собственной территорией и современным дизайном.</p>
+                        <p>Премиальный дом из кедрового бруса с панорамным остеклением.</p>
+                        <button class="detail-button" data-modal="modal-kedr">Подробнее</button>
                     </div>
                 </div>
+
+                <!-- Проект 5 -->
+                <div class="project-card">
+                    <img src="https://optim.tildacdn.com/tild6563-3935-4232-b431-386138396332/-/format/webp/photo_2024-11-06_11-.jpg.webp" alt="Проект Берёza" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Берёза</h3>
+                        <p class="project-location">📍 Новгородская область</p>
+                        <div class="project-features">
+                            <span class="project-feature">7 900 000 ₽</span>
+                            <span class="project-feature">115 м²</span>
+                        </div>
+                        <p>Экономичный вариант для начинающих загородных жителей.</p>
+                        <button class="detail-button" data-modal="modal-bereza">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Проект 6 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Проект Дуб" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Дуб</h3>
+                        <p class="project-location">📍 Владимирская область</p>
+                        <div class="project-features">
+                            <span class="project-feature">18 200 000 ₽</span>
+                            <span class="project-feature">210 м²</span>
+                        </div>
+                        <p>Дом для многопоколенной семьи с отдельными зонами для каждого.</p>
+                        <button class="detail-button" data-modal="modal-dub">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section section-dark">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы наших клиентов</h2>
+                <p>Что говорят люди о нашей работе</p>
+            </div>
+
+            {% if latest_reviews %}
+            <div class="reviews-grid">
+                {% for review in latest_reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">
+                                {{ review.user.first_name|first|default:review.user.username|first|upper }}
+                            </div>
+                            <div>
+                                <h4>{{ review.user.first_name|default:review.user.username }}</h4>
+                                <span class="review-date">{{ review.created_at|date:"d.m.Y" }}</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <span class="star filled">⭐</span>
+                                {% else %}
+                                    <span class="star">☆</span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p class="review-text">{{ review.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="no-reviews">
+                <p>Пока нет отзывов. Будьте первым!</p>
+            </div>
+            {% endif %}
+
+            <div class="reviews-actions">
+                <a href="{% url 'reviews' %}" class="cta-button">Все отзывы</a>
+                <a href="{% url 'reviews' %}#add-review" class="auth-button register">Оставить отзыв</a>
             </div>
         </div>
     </section>
@@ -183,7 +243,7 @@
                 <h2>Свяжитесь с нами</h2>
                 <p>Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
             </div>
-            
+
             <div class="content-block">
                 <div class="text-content">
                     <h3>Наши контакты</h3>
@@ -192,7 +252,7 @@
                     <p><strong>Адрес:</strong> г. Москва, ул. Строителей, 123</p>
                     <p><strong>Режим работы:</strong> Пн-Пт: 9:00-18:00</p>
                 </div>
-                
+
                 <div class="contact-form">
                     <form method="post">
                         {% csrf_token %}
@@ -228,4 +288,491 @@
             </div>
         </div>
     </section>
+
+    <!-- Сообщения -->
+    {% if messages %}
+    <div class="container" style="margin-top: 20px;">
+        {% for message in messages %}
+        <div style="padding: 15px; margin: 10px 0; border-radius: 5px;
+                    background: {% if message.tags == 'success' %}#d4edda{% else %}#f8d7da{% endif %};
+                    color: {% if message.tags == 'success' %}#155724{% else %}#721c24{% endif %};
+                    border: 1px solid {% if message.tags == 'success' %}#c3e6cb{% else %}#f5c6cb{% endif %};">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Модальные окна для всех проектов -->
+
+    <!-- Модальное окно для проекта Вереск -->
+    <div id="modal-veresk" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="modal-veresk">&times;</span>
+            <div class="project-modal-header">
+                <div class="project-modal-slider" id="modal-veresk-slider">
+                    <div class="project-modal-slide">
+                        <img src="https://avatars.mds.yandex.net/get-altay/4001569/2a000001766658dc0d0e8baf8a3eea27b371/XXXL" alt="Проект Вереск - фото 1">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://i.pinimg.com/736x/0b/33/52/0b3352cbd174b46afaf5c88d289945ec.jpg" alt="Проект Вереск - фото 2">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://xn--80akfnsfhtcs.xn--p1ai/upload/iblock/364/3640c2a72969172469d632e45b472b26.jpg" alt="Проект Вереск - фото 3">
+                    </div>
+                </div>
+                <div class="modal-slider-arrow modal-slider-prev">❮</div>
+                <div class="modal-slider-arrow modal-slider-next">❯</div>
+                <div class="modal-slider-nav">
+                    <div class="modal-slider-dot active"></div>
+                    <div class="modal-slider-dot"></div>
+                    <div class="modal-slider-dot"></div>
+                </div>
+            </div>
+            <div class="project-modal-body">
+                <h2 class="project-modal-title">Проект Мидгард</h2>
+                <p class="project-modal-location">📍 Московская область</p>
+                <p class="project-modal-price">9 980 000 ₽</p>
+                <div class="project-modal-section">
+                    <h4>О проекте</h4>
+                    <p>Проект создан основателем компании для своей семьи — дом продуман до мелочей для комфортной жизни 2 взрослых и 1–2 детей.</p>
+                    <p>Рациональная планировка при минимальной площади: всё необходимое — без лишнего.</p>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Комплектация</h4>
+                    <div class="project-modal-features">
+                        <div class="project-modal-feature"><strong>Фундамент:</strong> свайно-брусовой</div>
+                        <div class="project-modal-feature"><strong>Стены:</strong> клееный брус 185×164 мм</div>
+                        <div class="project-modal-feature"><strong>Кровля:</strong> металлочерепица</div>
+                        <div class="project-modal-feature"><strong>Окна:</strong> пластиковые Rehau</div>
+                    </div>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Характеристики</h4>
+                    <ul class="project-modal-list">
+                        <li>Три спальни: 11, 14 и 15 м²</li>
+                        <li>Гостиная: 32 м²</li>
+                        <li>Кухня: 9 м²</li>
+                        <li>2 санузла</li>
+                        <li>Терасса: 22 м²</li>
+                    </ul>
+                </div>
+                <button class="modal-application-btn" data-project="Мидгард">Оставить заявку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проекта Сосна -->
+    <div id="modal-sosna" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="modal-sosna">&times;</span>
+            <div class="project-modal-header">
+                <div class="project-modal-slider" id="modal-sosna-slider">
+                    <div class="project-modal-slide">
+                        <img src="https://optim.tildacdn.com/tild3332-3965-4038-b765-646232643633/-/format/webp/photo_2024-10-21_18-.jpg.webp" alt="Проект Сосна - фото 1">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://optim.tildacdn.com/tild3631-6365-4065-b062-313263353639/-/format/webp/photo_2025-07-24_18-.jpg.webp" alt="Проект Сосна - фото 2">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://optim.tildacdn.com/tild6365-3163-4339-b731-363031366436/-/format/webp/photo_2024-10-21_18-.jpg.webp" alt="Проект Сосна - фото 3">
+                    </div>
+                </div>
+                <div class="modal-slider-arrow modal-slider-prev">❮</div>
+                <div class="modal-slider-arrow modal-slider-next">❯</div>
+                <div class="modal-slider-nav">
+                    <div class="modal-slider-dot active"></div>
+                    <div class="modal-slider-dot"></div>
+                    <div class="modal-slider-dot"></div>
+                </div>
+            </div>
+            <div class="project-modal-body">
+                <h2 class="project-modal-title">Проект Реикамо</h2>
+                <p class="project-modal-location">📍 Ленинградская область</p>
+                <p class="project-modal-price">12 500 000 ₽</p>
+                <div class="project-modal-section">
+                    <h4>О проекте</h4>
+                    <p>Просторный двухэтажный дом для большой семьи. Отличается современной архитектурой и продуманной планировкой.</p>
+                    <p>Идеально подходит для постоянного проживания за городом.</p>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Комплектация</h4>
+                    <div class="project-modal-features">
+                        <div class="project-modal-feature"><strong>Фундамент:</strong> монолитная плита 300 мм</div>
+                        <div class="project-modal-feature"><strong>Стены:</strong> профилированный брус 200×200 мм</div>
+                        <div class="project-modal-feature"><strong>Кровля:</strong> мягкая черепица</div>
+                        <div class="project-modal-feature"><strong>Окна:</strong> деревянные с двойным стеклопакетом</div>
+                    </div>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Характеристики</h4>
+                    <ul class="project-modal-list">
+                        <li>4 спальни</li>
+                        <li>Просторная гостиная 40 м²</li>
+                        <li>Кабинет</li>
+                        <li>Две ванные комнаты</li>
+                        <li>Большая терраса с выходом из гостиной</li>
+                    </ul>
+                </div>
+                <button class="modal-application-btn" data-project="Реикамо">Оставить заявку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проекта Ель -->
+    <div id="modal-el" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="modal-el">&times;</span>
+            <div class="project-modal-header">
+                <div class="project-modal-slider" id="modal-el-slider">
+                    <div class="project-modal-slide">
+                        <img src="https://compactstroy.ru/wp-content/uploads/2015/07/remont-derevyannyh-domov.jpg" alt="Проект Ель - фото 1">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://optim.tildacdn.com/tild3063-3839-4639-a536-663165643039/-/format/webp/2.jpg.webp" alt="Проект Ель - фото 2">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://vhdom.ru/upload/iblock/eec/493f48cbffdc3636ad20eb182d55c197.jpg" alt="Проект Ель - фото 3">
+                    </div>
+                </div>
+                <div class="modal-slider-arrow modal-slider-prev">❮</div>
+                <div class="modal-slider-arrow modal-slider-next">❯</div>
+                <div class="modal-slider-nav">
+                    <div class="modal-slider-dot active"></div>
+                    <div class="modal-slider-dot"></div>
+                    <div class="modal-slider-dot"></div>
+                </div>
+            </div>
+            <div class="project-modal-body">
+                <h2 class="project-modal-title">Проект Скальд</h2>
+                <p class="project-modal-location">📍 Калужская область</p>
+                <p class="project-modal-price">8 200 000 ₽</p>
+                <div class="project-modal-section">
+                    <h4>О проекте</h4>
+                    <p>Энергоэффективный дом с современными системами отопления и вентиляции. Отличное решение для экономных хозяев.</p>
+                    <p>Низкие эксплуатационные расходы при высоком комфорте проживания.</p>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Комплектация</h4>
+                    <div class="project-modal-features">
+                        <div class="project-modal-feature"><strong>Фундамент:</strong> УШП (утепленная шведская плита)</div>
+                        <div class="project-modal-feature"><strong>Стены:</strong> клееный брус 150×180 мм</div>
+                        <div class="project-modal-feature"><strong>Кровля:</strong> фальцевая с утеплением 250 мм</div>
+                        <div class="project-modal-feature"><strong>Отопление:</strong> тепловой насос воздух-вода</div>
+                    </div>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Характеристики</h4>
+                    <ul class="project-modal-list">
+                        <li>3 спальни</li>
+                        <li>Совмещенная гостиная-кухня 35 м²</li>
+                        <li>Котельная с современным оборудованием</li>
+                        <li>Система рекуперации воздуха</li>
+                        <li>Гараж на 1 автомобиль</li>
+                    </ul>
+                </div>
+                <button class="modal-application-btn" data-project="Скальд">Оставить заявку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проекта Кедр -->
+    <div id="modal-kedr" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="modal-kedr">&times;</span>
+            <div class="project-modal-header">
+                <div class="project-modal-slider" id="modal-kedr-slider">
+                    <div class="project-modal-slide">
+                        <img src="https://static.tildacdn.com/tild3738-6665-4230-b261-663137323833/photo_2024-10-21_18-.jpg" alt="Проект Кедр - фото 1">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://avatars.mds.yandex.net/get-ydo/2375918/2a00000170a4b593b1959c2cd9582b058a26/diploma" alt="Проект Кедр - фото 2">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://static.tildacdn.com/tild6364-6361-4637-b938-643066313662/photo_2024-10-21_18-.jpg" alt="Проект Кедр - фото 3">
+                    </div>
+                </div>
+                <div class="modal-slider-arrow modal-slider-prev">❮</div>
+                <div class="modal-slider-arrow modal-slider-next">❯</div>
+                <div class="modal-slider-nav">
+                    <div class="modal-slider-dot active"></div>
+                    <div class="modal-slider-dot"></div>
+                    <div class="modal-slider-dot"></div>
+                </div>
+            </div>
+            <div class="project-modal-body">
+                <h2 class="project-modal-title">Проект Кедр</h2>
+                <p class="project-modal-location">📍 Тверская область</p>
+                <p class="project-modal-price">15 800 000 ₽</p>
+                <div class="project-modal-section">
+                    <h4>О проекте</h4>
+                    <p>Премиальный дом из кедрового бруса с панорамным остеклением. Роскошный интерьер и эксклюзивная отделка.</p>
+                    <p>Идеальный выбор для тех, кто ценит качество и уникальный дизайн.</p>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Комплектация</h4>
+                    <div class="project-modal-features">
+                        <div class="project-modal-feature"><strong>Фундамент:</strong> монолитная плита с подогревом</div>
+                        <div class="project-modal-feature"><strong>Стены:</strong> кедровый брус 250×250 мм</div>
+                        <div class="project-modal-feature"><strong>Кровля:</strong> натуральная черепица</div>
+                        <div class="project-modal-feature"><strong>Окна:</strong> панорамные алюминиевые</div>
+                    </div>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Характеристики</h4>
+                    <ul class="project-modal-list">
+                        <li>4 просторные спальни с гардеробными</li>
+                        <li>Гостиная с камином 45 м²</li>
+                        <li>Домашний кинотеатр</li>
+                        <li>Сауна с бассейном</li>
+                        <li>Терраса с видом на лес</li>
+                    </ul>
+                </div>
+                <button class="modal-application-btn" data-project="Кедр">Оставить заявку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проекта Берёза -->
+    <div id="modal-bereza" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="modal-bereza">&times;</span>
+            <div class="project-modal-header">
+                <div class="project-modal-slider" id="modal-bereza-slider">
+                    <div class="project-modal-slide">
+                        <img src="https://optim.tildacdn.com/tild6239-6537-4261-a664-363166326562/-/format/webp/photo_2024-10-21_18-.jpg.webp" alt="Проект Берёза - фото 1">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://avatars.mds.yandex.net/get-ydo/3937212/2a0000017c97ccf090b8c78896758d758814/diploma" alt="Проект Берёза - фото 2">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://static.tildacdn.com/tild6436-3234-4930-b231-653864303839/photo_2024-10-21_18-.jpg" alt="Проект Берёза - фото 3">
+                    </div>
+                </div>
+                <div class="modal-slider-arrow modal-slider-prev">❮</div>
+                <div class="modal-slider-arrow modal-slider-next">❯</div>
+                <div class="modal-slider-nav">
+                    <div class="modal-slider-dot active"></div>
+                    <div class="modal-slider-dot"></div>
+                    <div class="modal-slider-dot"></div>
+                </div>
+            </div>
+            <div class="project-modal-body">
+                <h2 class="project-modal-title">Проект Берёза</h2>
+                <p class="project-modal-location">📍 Новгородская область</p>
+                <p class="project-modal-price">7 900 000 ₽</p>
+                <div class="project-modal-section">
+                    <h4>О проекте</h4>
+                    <p>Экономичный и практичный дом для начинающих загородных жителей. Простая конструкция и надежные материалы.</p>
+                    <p>Отличное соотношение цены и качества для первого загородного дома.</p>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Комплектация</h4>
+                    <div class="project-modal-features">
+                        <div class="project-modal-feature"><strong>Фундамент:</strong> винтовые сваи</div>
+                        <div class="project-modal-feature"><strong>Стены:</strong> профилированный брус 150×150 мм</div>
+                        <div class="project-modal-feature"><strong>Кровля:</strong> ондулин</div>
+                        <div class="project-modal-feature"><strong>Окна:</strong> пластиковые стандартные</div>
+                    </div>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Характеристики</h4>
+                    <ul class="project-modal-list">
+                        <li>2 спальни</li>
+                        <li>Компактная гостиная 25 м²</li>
+                        <li>Небольшая кухня</li>
+                        <li>1 санузел</li>
+                        <li>Веранда для отдыха</li>
+                    </ul>
+                </div>
+                <button class="modal-application-btn" data-project="Берёза">Оставить заявку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проекта Дуб -->
+    <div id="modal-dub" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="modal-dub">&times;</span>
+            <div class="project-modal-header">
+                <div class="project-modal-slider" id="modal-dub-slider">
+                    <div class="project-modal-slide">
+                        <img src="https://avatars.mds.yandex.net/i?id=c7f0f1a3cdfc40496c4d433c1c337774_l-7549373-images-thumbs&n=13" alt="Проект Дуб - фото 1">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://avatars.mds.yandex.net/i?id=8f6b5b3a48a91b50f3a99d3f867569eb_l-9456276-images-thumbs&n=13" alt="Проект Дуб - фото 2">
+                    </div>
+                    <div class="project-modal-slide">
+                        <img src="https://optim.tildacdn.com/tild3830-6665-4262-b661-396663616561/-/format/webp/photo_2024-11-07_10-.jpg.webp" alt="Проект Дуб - фото 3">
+                    </div>
+                </div>
+                <div class="modal-slider-arrow modal-slider-prev">❮</div>
+                <div class="modal-slider-arrow modal-slider-next">❯</div>
+                <div class="modal-slider-nav">
+                    <div class="modal-slider-dot active"></div>
+                    <div class="modal-slider-dot"></div>
+                    <div class="modal-slider-dot"></div>
+                </div>
+            </div>
+            <div class="project-modal-body">
+                <h2 class="project-modal-title">Проект Дуб</h2>
+                <p class="project-modal-location">📍 Владимирская область</p>
+                <p class="project-modal-price">18 200 000 ₽</p>
+                <div class="project-modal-section">
+                    <h4>О проекте</h4>
+                    <p>Солидный дом для многопоколенной семьи. Просторные комнаты, отдельные зоны для разных поколений.</p>
+                    <p>Классическая архитектура и современный комфорт в одном проекте.</p>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Комплектация</h4>
+                    <div class="project-modal-features">
+                        <div class="project-modal-feature"><strong>Фундамент:</strong> ленточный заглубленный</div>
+                        <div class="project
+                                <div class="project-modal-feature"><strong><strong>Фундамент:</strong> винтовые сваи</div>
+                        <div class="project-modal-feature"><strong>Стены:</strong> профилированный брус 150×150 мм</div>
+                        <div class="project-modal-feature"><strong>Кровля:</strong> ондулин</div>
+                        <div class="project-modal-feature"><strong>Окна:</strong> пластиковые стандартные</div>
+                    </div>
+                </div>
+                <div class="project-modal-section">
+                    <h4>Характеристики</h4>
+                    <ul class="project-modal-list">
+                        <li>2 спальни</li>
+                        <li>Компактная гостиная 25 м²</li>
+                        <li>Небольшая кухня</li>
+                        <li>1 санузел</li>
+                        <li>Веранда для отдыха</li>
+                    </ul>
+                </div>
+                <button class="modal-application-btn" data-project="Дуб">Оставить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <style>
+    /* Стили для кнопок в секции отзывов */
+.reviews-actions .cta-button {
+    background: linear-gradient(135deg, rgb(112, 98, 89) 0%, rgb(112, 98, 89) 100%);
+    color: white;
+    border: none;
+}
+
+.reviews-actions .auth-button.register {
+    background: linear-gradient(135deg, #16497e 0%, rgb(22, 73, 126) 100%);
+    color: white;
+    border: none;
+}
+
+.reviews-actions .cta-button:hover {
+    background: linear-gradient(135deg, #5a4f4a 0%, #5a4f4a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(186, 188, 188, 0.3);
+}
+
+.reviews-actions .auth-button.register:hover {
+    background: linear-gradient(135deg, #113860 0%, #113860 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(186, 188, 188, 0.3);
+}
+    /* Reviews Section Styles */
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .review-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 16px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+    }
+
+    .review-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+    }
+
+    .reviewer-info {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .reviewer-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .reviewer-info h4 {
+        margin: 0;
+        color: #2d3748;
+        font-size: 1rem;
+    }
+
+    .review-date {
+        font-size: 0.8rem;
+        color: #718096;
+    }
+
+    .review-rating {
+        display: flex;
+        gap: 0.2rem;
+    }
+
+    .star {
+        font-size: 1.2rem;
+    }
+
+    .star.filled {
+        color: #fbbf24;
+    }
+
+    .review-text {
+        color: #4a5568;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .no-reviews {
+        text-align: center;
+        padding: 2rem;
+        color: #718096;
+    }
+
+    .reviews-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+        .reviews-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .reviews-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
 {% endblock %}

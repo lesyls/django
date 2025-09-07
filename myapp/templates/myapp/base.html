@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Строительная компания "ПроектСтрой"{% endblock %}</title>
+    <title>{% block title %}Проект Мидгард{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,7 +15,8 @@
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #2F120E;
+            background-color: white;
             overflow-x: hidden;
         }
 
@@ -27,12 +28,12 @@
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: #6D2C18;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .header-content {
@@ -45,7 +46,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #2c5282;
+            color: white;
             text-decoration: none;
         }
 
@@ -58,13 +59,13 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: white;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #2c5282;
+            color: rgba(216, 0, 0, 0.1);
         }
 
         .auth-buttons {
@@ -74,7 +75,7 @@
 
         .auth-button {
             padding: 10px 20px;
-            border: 2px solid #2c5282;
+            border: 2px solid white;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 500;
@@ -82,18 +83,18 @@
         }
 
         .auth-button.login {
-            background: #2c5282;
-            color: white;
+            background: white;
+            color: #6D2C18;
         }
 
         .auth-button.register {
             background: transparent;
-            color: #2c5282;
+            color: white;
         }
 
         .auth-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(44, 82, 130, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
 
         .user-menu {
@@ -103,13 +104,24 @@
         }
 
         .user-greeting {
-            color: #2c5282;
+            color: white;
             font-weight: 500;
         }
 
         .logout-button {
             padding: 8px 16px;
-            background: #e53e3e;
+            background: #2f120e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .profile-button {
+            padding: 8px 16px;
+            background: rgba(216, 0, 0, 0.1);
             color: white;
             border: none;
             border-radius: 5px;
@@ -121,7 +133,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background: linear-gradient(rgba(47, 18, 14, 0.35), rgba(47, 18, 14, 0.38)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -147,16 +159,16 @@
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
-            background: #2c5282;
-            color: white;
+            background: #ffffff;
+            color: rgb(47, 18, 14);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-weight: 600;
             transition: background 0.3s;
         }
 
         .cta-button:hover {
-            background: #1a365d;
+            background: rgb(214, 214, 214);
         }
 
         .scroll-down {
@@ -198,13 +210,13 @@
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: #2c5282;
+            color: #2f120e;
             margin-bottom: 1rem;
         }
 
         .section-title p {
             font-size: 1.2rem;
-            color: #666;
+            color: #706259;
         }
 
         .content-block {
@@ -229,18 +241,19 @@
         .text-content h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #2c5282;
+            color: #2f120e;
         }
 
         .text-content h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: #2c5282;
+            color: #2f120e;
         }
 
         .text-content p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            color: #2F120E;
         }
 
         .image-content img {
@@ -266,6 +279,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             text-align: center;
             transition: transform 0.3s;
+            border-top: 4px solid #8FB2DA;
         }
 
         .service-card:hover {
@@ -274,7 +288,7 @@
 
         .service-icon {
             font-size: 3rem;
-            color: #2c5282;
+            color: #2f120e;
             margin-bottom: 1rem;
         }
 
@@ -292,10 +306,12 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .project-image {
@@ -312,11 +328,11 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #2c5282;
+            color: #2f120e;
         }
 
         .project-location {
-            color: #666;
+            color: #706259;
             margin-bottom: 1rem;
         }
 
@@ -332,6 +348,36 @@
             border-radius: 20px;
             font-size: 0.9rem;
             color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Buildings Grid - 3 в строку */
+        .buildings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 1024px) {
+            .buildings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .buildings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-block {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
         }
 
         /* Contact Form */
@@ -340,6 +386,7 @@
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
         }
 
         .form-group {
@@ -350,6 +397,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            color: #2f120e;
         }
 
         .form-group input,
@@ -367,13 +415,13 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #2c5282;
+            border-color: #8FB2DA;
         }
 
         .submit-btn {
             width: 100%;
             padding: 15px;
-            background: #2c5282;
+            background: #2f120e;
             color: white;
             border: none;
             border-radius: 5px;
@@ -384,12 +432,12 @@
         }
 
         .submit-btn:hover {
-            background: #1a365d;
+            background: #2f120e;
         }
 
         /* Footer */
         footer {
-            background: #2d3748;
+            background: #3a3a3a;
             color: white;
             padding: 3rem 0;
         }
@@ -402,7 +450,7 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #e2e8f0;
+            color: #ffffff;
         }
 
         .footer-bottom {
@@ -412,25 +460,358 @@
             border-top: 1px solid #4a5568;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .content-block {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        /* Бургер-меню */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 1001;
+        }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
+        .burger-menu span {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Анимация бургера при активном состоянии */
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Мобильная версия */
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
             }
 
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #6D2C18;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
             }
 
             .auth-buttons {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
+
+            .user-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Затемнение фона при открытом меню */
+        @media (max-width: 768px) {
+            .nav-links::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: -1;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .nav-links.active::before {
+                opacity: 1;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1000px;
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close-modal:hover {
+            color: #ff6b6b;
+        }
+
+        .project-modal-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .project-modal-slider {
+            display: flex;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .project-modal-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .project-modal-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-slider-dot.active {
+            background: white;
+        }
+
+        .modal-slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background 0.3s;
+        }
+
+        .modal-slider-arrow:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .modal-slider-prev {
+            left: 20px;
+        }
+
+        .modal-slider-next {
+            right: 20px;
+        }
+
+        .project-modal-body {
+            padding: 40px;
+        }
+
+        .project-modal-title {
+            font-size: 2.2rem;
+            color: #2f120e;
+            margin-bottom: 10px;
+        }
+
+        .project-modal-location {
+            color: #706259;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .project-modal-price {
+            font-size: 1.8rem;
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .project-modal-section {
+            margin-bottom: 30px;
+        }
+
+        .project-modal-section h4 {
+            font-size: 1.4rem;
+            color: #2f120e;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .project-modal-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .project-modal-feature {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid rgba(216, 0, 0, 0.1);
+        }
+
+        .project-modal-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-modal-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .project-modal-list li:before {
+            content: "•";
+            color: #8FB2DA;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .detail-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #26495C;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .detail-button:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 82, 130, 0.3);
+        }
+
+        /* User menu styles */
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-greeting {
+            color: white;
+            font-weight: 500;
+        }
+
+        .logout-button, .profile-button {
+            padding: 8px 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .logout-button {
+            background: #26495C;
+        }
+
+        .profile-button {
+            background: #8FB2DA;
+        }
+
+        .logout-button:hover, .profile-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Стиль для кнопки заявки в модальном окне */
+        .modal-application-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #2f120e;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .modal-application-btn:hover {
+            background: #4a1f17;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -438,18 +819,27 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="/" class="logo">ПроектСтрой</a>
+                <a href="/" class="logo">ForestLine</a>
+
+                <!-- Бургер-меню -->
+                <div class="burger-menu" id="burgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="#about">О компании</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#projects">Проекты</a></li>
-                        <li><a href="#buildings">Наши постройки</a></li>
-                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="/#about">О компании</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#projects">Проекты</a></li>
+                        <li><a href="/#buildings">Наши постройки</a></li>
+                        <li><a href="/#reviews">Отзывы</a></li>
+                        <li><a href="/#contact">Контакты</a></li>
 
                         {% if user.is_authenticated %}
                         <li class="user-menu">
-                            <span class="user-greeting">Привет, {{ user.username }}!</span>
+                            <a href="{% url 'profile' %}" class="profile-button">Профиль</a>
                             <a href="{% url 'logout' %}" class="logout-button">Выйти</a>
                         </li>
                         {% else %}
@@ -512,6 +902,183 @@
             document.querySelector('#about').scrollIntoView({
                 behavior: 'smooth'
             });
+        });
+    </script>
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Инициализируем слайдер при открытии модального окна
+            setTimeout(() => initSlider(modalId), 100);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Slider functionality
+        function initSlider(modalId) {
+            const slider = document.querySelector(`#${modalId} .project-modal-slider`);
+            const slides = document.querySelectorAll(`#${modalId} .project-modal-slide`);
+            const dots = document.querySelectorAll(`#${modalId} .modal-slider-dot`);
+            const prevBtn = document.querySelector(`#${modalId} .modal-slider-prev`);
+            const nextBtn = document.querySelector(`#${modalId} .modal-slider-next`);
+
+            // Проверяем, что все элементы существуют
+            if (!slider || slides.length === 0) return;
+
+            let currentSlide = 0;
+
+            function goToSlide(n) {
+                currentSlide = n;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                // Обновляем точки, если они есть
+                if (dots && dots.length > 0) {
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                }
+            }
+
+            // Навигация по точкам
+            if (dots && dots.length > 0) {
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => goToSlide(index));
+                });
+            }
+
+            // Кнопка "назад"
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+                });
+            }
+
+            // Кнопка "вперед"
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    goToSlide((currentSlide + 1) % slides.length);
+                });
+            }
+
+            // Инициализируем первый слайд
+            goToSlide(0);
+        }
+
+        // Функция для перехода к форме контактов
+        function goToContactForm(projectName) {
+            // Закрываем все модальные окна
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+
+            // Прокручиваем к форме контактов
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Опционально: заполняем поле услуги названием проекта
+                const serviceSelect = document.querySelector('#service');
+                if (serviceSelect) {
+                    serviceSelect.value = 'house'; // или другое значение, соответствующее строительству домов
+
+                    // Добавляем информацию о проекте в сообщение
+                    const messageTextarea = document.querySelector('#message');
+                    if (messageTextarea) {
+                        messageTextarea.value = `Заинтересовал проект: ${projectName}. ` + (messageTextarea.value || '');
+                        messageTextarea.focus();
+                    }
+                }
+            }
+        }
+
+        // Initialize modals
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalButtons = document.querySelectorAll('[data-modal]');
+            modalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    openModal(modalId);
+                });
+            });
+
+            const closeButtons = document.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    closeModal(modalId);
+                });
+            });
+
+            // Обработчики для кнопок "Оставить заявку" в модальных окнах
+            document.querySelectorAll('.modal-application-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectName = this.getAttribute('data-project');
+                    goToContactForm(projectName);
+                });
+            });
+        });
+    </script>
+    <script>
+        // Бургер-меню
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        if (burgerMenu) {
+            burgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Закрытие меню при клике на ссылку
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') &&
+                    !e.target.closest('.nav-links') &&
+                    !e.target.closest('.burger-menu')) {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+        }
+
+        // Закрытие меню при изменении размера окна
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                if (burgerMenu) burgerMenu.classList.remove('active');
+                if (navLinks) navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
         });
     </script>
 </body>

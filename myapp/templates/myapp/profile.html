@@ -1,10 +1,760 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block title %}Профиль - ПроектСтрой{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="section-title">
+            <h2>Мой профиль</h2>
+            <p>Управление вашей учетной записью</p>
+        </div>
+
+        {% if messages %}
+        <div class="alert-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Основной блок профиля -->
+        <div class="profile-main-card">
+            <!-- Шапка профиля -->
+            <div class="profile-header-full">
+                <div class="profile-avatar-large">
+                    <span>{{ user.first_name|first|default:user.username|first|upper }}{{ user.last_name|first|upper }}</span>
+                </div>
+                <div class="profile-info-header">
+                    <h1>{{ user.first_name|default:"Пользователь" }} {{ user.last_name|default:"" }}</h1>
+                    <p class="profile-email-large">{{ user.email }}</p>
+                    <div class="profile-stats-large">
+                        <div class="stat-item-large">
+                            <span class="stat-number-large">{{ contact_requests|length }}</span>
+                            <span class="stat-label-large">заявок</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions-header">
+                    <button class="edit-btn-header" onclick="openEditForm()">
+                        Редактировать
+                    </button>
+                    <button class="history-btn-header" onclick="toggleHistory()">
+                        История заявок
+                    </button>
+                </div>
+            </div>
+
+            <!-- Информационные блоки -->
+            <div class="profile-content-grid">
+                <!-- Основная информация -->
+                <div class="info-section-modern">
+                    <div class="info-section-header">
+                        <h3>Основная информация</h3>
+                    </div>
+                    <div class="info-items-modern">
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Имя</span>
+                                <span class="info-value-modern">{{ user.first_name|default:"Не указано" }}</span>
+                            </div>
+                        </div>
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Фамилия</span>
+                                <span class="info-value-modern">{{ user.last_name|default:"Не указана" }}</span>
+                            </div>
+                        </div>
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Email</span>
+                                <span class="info-value-modern">{{ user.email }}</span>
+                            </div>
+                        </div>
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Телефон</span>
+                                <span class="info-value-modern">{{ profile.phone|default:"Не указан" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Контактная информация -->
+                <div class="info-section-modern">
+                    <div class="info-section-header">
+                        <h3>Контактная информация</h3>
+                    </div>
+                    <div class="info-items-modern">
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Город</span>
+                                <span class="info-value-modern">{{ profile.city|default:"Не указан" }}</span>
+                            </div>
+                        </div>
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Дата рождения</span>
+                                <span class="info-value-modern">{% if profile.birth_date %}{{ profile.birth_date|date:"d.m.Y" }}{% else %}Не указана{% endif %}</span>
+                            </div>
+                        </div>
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Адрес</span>
+                                <span class="info-value-modern">{{ profile.address|default:"Не указан" }}</span>
+                            </div>
+                        </div>
+                        <div class="info-item-modern">
+                            <div class="info-content">
+                                <span class="info-label-modern">Дата регистрации</span>
+                                <span class="info-value-modern">{{ user.date_joined|date:"d.m.Y" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Форма редактирования -->
+        <div class="edit-form-container" id="editForm">
+            <div class="form-header">
+                <h3>Редактирование профиля</h3>
+                <button class="close-btn" onclick="closeEditForm()">×</button>
+            </div>
+
+            <form method="post" class="modern-form">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                <div class="form-errors">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p>• {{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <p>• {{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="id_first_name">Имя *</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_last_name">Фамилия *</label>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email">Email *</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_phone">Телефон</label>
+                        {{ form.phone }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_city">Город</label>
+                        {{ form.city }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_birth_date">Дата рождения</label>
+                        {{ form.birth_date }}
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="id_address">Адрес</label>
+                        {{ form.address }}
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Сохранить изменения</button>
+                    <button type="button" class="cancel-btn" onclick="closeEditForm()">Отмена</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- История заявок -->
+        <div class="history-section" id="historySection" style="display: none;">
+            <div class="section-header">
+                <h3>История заявок</h3>
+                <p>Все ваши обращения к нам</p>
+            </div>
+
+            {% if contact_requests %}
+            <div class="requests-grid">
+                {% for request in contact_requests %}
+                <div class="request-card status-{{ request.status }}">
+                    <div class="request-header">
+                        <span class="request-date">{{ request.created_at|date:"d.m.Y H:i" }}</span>
+                        <span class="request-status status-{{ request.status }}">
+                            {{ request.get_status_display }}
+                        </span>
+                    </div>
+
+                    <div class="request-content">
+                        <h4>{{ request.service|default:"Общая заявка" }}</h4>
+                        <p class="request-phone">Ваш номер:  {{ request.phone }}</p>
+
+                        {% if request.message %}
+                        <p class="request-message">{{ request.message|truncatewords:20 }}</p>
+                        {% endif %}
+
+                        {% if request.status == 'approved' %}
+                        <div class="request-alert success">
+                            ✅ Заявка одобрена. Мы скоро вам перезвоним!
+                        </div>
+                        {% elif request.status == 'rejected' %}
+                        <div class="request-alert error">
+                            ❌ Заявка отклонена.
+                        </div>
+                        {% endif %}
+
+                        {% if request.admin_notes %}
+                        <div class="admin-notes">
+                            <strong>Комментарий администратора:</strong>
+                            <p>{{ request.admin_notes }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">📋</div>
+                <h4>У вас пока нет заявок</h4>
+                <p>Оставьте первую заявку и мы свяжемся с вами</p>
+                <a href="#contact" class="cta-button">Оставить заявку</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<style>
+/* Современные стили для профиля */
+.profile-main-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.profile-header-full {
+    background: linear-gradient(135deg, rgb(47, 18, 14) 0%, rgba(47, 18, 14, 0.76) 100%);
+    color: white;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-avatar-large {
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+.profile-info-header h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.profile-email-large {
+    margin: 0 0 1.5rem;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.profile-stats-large {
+    display: flex;
+    gap: 1rem;
+}
+
+.stat-item-large {
+    background: rgba(255,255,255,0.15);
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.stat-number-large {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.stat-label-large {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.profile-actions-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.edit-btn-header, .history-btn-header {
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 140px;
+}
+
+.edit-btn-header:hover, .history-btn-header:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+.profile-content-grid {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.info-section-modern {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.info-section-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.info-section-header h3 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.info-items-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
+    transition: all 0.3s;
+}
+
+.info-item-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: #cbd5e0;
+}
+
+
+.info-content {
+    flex: 1;
+}
+
+.info-label-modern {
+    display: block;
+    font-size: 0.8rem;
+    color: #718096;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value-modern {
+    display: block;
+    font-size: 1rem;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* Остальные стили остаются без изменений */
+.edit-form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    display: none;
+    margin-bottom: 2rem;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-header h3 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #718096;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.save-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.cancel-btn {
+    padding: 12px 24px;
+    background: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #cbd5e0;
+}
+
+.history-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.section-header {
+    margin-bottom: 1.5rem;
+}
+
+.section-header h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.section-header p {
+    margin: 0;
+    color: #718096;
+}
+
+.requests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.request-card {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border-left: 4px solid #e2e8f0;
+    transition: all 0.3s;
+}
+
+.request-card.status-approved {
+    border-left-color: #48bb78;
+    background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+}
+
+.request-card.status-rejected {
+    border-left-color: #f56565;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+}
+
+.request-card.status-pending {
+    border-left-color: #ecc94b;
+    background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+}
+
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.request-date {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.request-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-pending { background: #fefcbf; color: #744210; }
+.status-approved { background: #c6f6d5; color: #22543d; }
+.status-rejected { background: #fed7d7; color: #742a2a; }
+
+.request-content h4 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.request-phone {
+    color: #4a5568;
+    margin: 0 0 0.8rem;
+}
+
+.request-message {
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.request-alert {
+    padding: 0.8rem;
+    border-radius: 12px;
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
+}
+
+.request-alert.success {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.request-alert.error {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.admin-notes {
+    background: #edf2f7;
+    padding: 0.8rem;
+    border-radius: 12px;
+    margin-top: 0.8rem;
+}
+
+.admin-notes strong {
+    color: #2d3748;
+    font-size: 0.9rem;
+}
+
+.admin-notes p {
+    margin: 0.3rem 0 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #718096;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h4 {
+    margin: 0 0 0.5rem;
+    color: #4a5568;
+}
+
+.alert-container {
+    margin-bottom: 2rem;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.alert-error {
+    background: #fed7d7;
+    color: #742a2a;
+    border: 1px solid #feb2b2;
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .profile-header-full {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .profile-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .requests-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-actions-header {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-header-full {
+        padding: 1.5rem;
+    }
+
+    .profile-avatar-large {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .profile-info-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .profile-actions-header {
+        flex-direction: column;
+    }
+
+    .edit-btn-header, .history-btn-header {
+        min-width: auto;
+    }
+}
+</style>
+
+<script>
+function openEditForm() {
+    document.getElementById('editForm').style.display = 'block';
+    window.scrollTo({top: document.getElementById('editForm').offsetTop - 100, behavior: 'smooth'});
+}
+
+function closeEditForm() {
+    document.getElementById('editForm').style.display = 'none';
+}
+
+function toggleHistory() {
+    const historySection = document.getElementById('historySection');
+    if (historySection.style.display === 'none') {
+        historySection.style.display = 'block';
+        window.scrollTo({top: historySection.offsetTop - 100, behavior: 'smooth'});
+    } else {
+        historySection.style.display = 'none';
+    }
+}
+
+// Автоматически открываем форму если есть ошибки
+document.addEventListener('DOMContentLoaded', function() {
+    {% if form.errors %}
+    openEditForm();
+    {% endif %}
+});
+</script>
+{% endblock %}

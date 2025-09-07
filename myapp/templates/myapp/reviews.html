@@ -1,10 +1,379 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block title %}Отзывы - ПроектСтрой{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h1>Отзывы о нашей работе</h1>
+            <p>Мнения наших клиентов - лучшая оценка качества</p>
+        </div>
+
+        {% if messages %}
+        <div class="alert-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Форма добавления отзыва -->
+        <div class="add-review-section" id="add-review">
+            <div class="review-form-card">
+                <h2>Оставьте ваш отзыв</h2>
+
+                {% if user.is_authenticated %}
+                    {% if user_review_exists %}
+                    <div class="info-message">
+                        <p>✅ Вы уже оставляли отзыв. Спасибо за ваше мнение!</p>
+                    </div>
+                    {% else %}
+                    <form method="post" class="review-form">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="id_rating">Ваша оценка</label>
+                            <select name="rating" id="id_rating" class="rating-select" required>
+                                <option value="">Выберите оценку</option>
+                                <option value="5">5 ⭐ - Отлично</option>
+                                <option value="4">4 ⭐ - Очень хорошо</option>
+                                <option value="3">3 ⭐ - Хорошо</option>
+                                <option value="2">2 ⭐ - Удовлетворительно</option>
+                                <option value="1">1 ⭐ - Плохо</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_text">Ваш отзыв</label>
+                            <textarea name="text" id="id_text" rows="4" placeholder="Поделитесь вашим опытом сотрудничества с нами..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Отправить отзыв</button>
+                    </form>
+                    {% endif %}
+                {% else %}
+                <div class="auth-required">
+                    <p>Для добавления отзыва необходимо <a href="{% url 'login' %}">войти</a> или <a href="{% url 'register' %}">зарегистрироваться</a></p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Все отзывы -->
+        <div class="all-reviews-section">
+            <h2>Все отзывы ({{ reviews|length }})</h2>
+
+            {% if reviews %}
+            <div class="reviews-grid-large">
+                {% for review in reviews %}
+                <div class="review-card-large">
+                    <div class="review-header-large">
+                        <div class="reviewer-info-large">
+                            <div class="reviewer-avatar-large">
+                                {{ review.user.first_name|first|default:review.user.username|first|upper }}
+                            </div>
+                            <div>
+                                <h4>{{ review.user.first_name|default:review.user.username }}</h4>
+                                <span class="review-date-large">{{ review.created_at|date:"d.m.Y" }}</span>
+                            </div>
+                        </div>
+                        <div class="review-rating-large">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <span class="star filled">⭐</span>
+                                {% else %}
+                                    <span class="star">☆</span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p class="review-text-large">{{ review.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-reviews">
+                <div class="empty-icon">💬</div>
+                <h3>Пока нет отзывов</h3>
+                <p>Будьте первым, кто поделится своим мнением!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<style>
+/* Стили для отзывов */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.review-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.reviewer-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.reviewer-info h4 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1rem;
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: #718096;
+}
+
+.review-rating {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.star {
+    font-size: 1.2rem;
+}
+
+.star.filled {
+    color: #fbbf24;
+}
+
+.review-text {
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+}
+
+.reviews-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Стили для страницы отзывов */
+.add-review-section {
+    margin: 2rem 0;
+}
+
+.review-form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.review-form-card h2 {
+    margin: 0 0 1.5rem;
+    color: #2d3748;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.rating-select {
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.rating-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.review-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.review-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.info-message {
+    background: #f0fff4;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #9ae6b4;
+    color: #22543d;
+}
+
+.auth-required {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+}
+
+.auth-required a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.auth-required a:hover {
+    text-decoration: underline;
+}
+
+.all-reviews-section {
+    margin: 3rem 0;
+}
+
+.all-reviews-section h2 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.reviews-grid-large {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.review-card-large {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    border-left: 4px solid #667eea;
+}
+
+.review-header-large {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.reviewer-info-large {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.reviewer-avatar-large {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.reviewer-info-large h4 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.1rem;
+}
+
+.review-date-large {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.review-rating-large {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.review-rating-large .star {
+    font-size: 1.4rem;
+}
+
+.review-text-large {
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.empty-reviews {
+    text-align: center;
+    padding: 3rem;
+    color: #718096;
+}
+
+.empty-reviews .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.empty-reviews h3 {
+    margin: 0 0 0.5rem;
+    color: #4a5568;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .reviews-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .review-header-large {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .review-card-large {
+        padding: 1.5rem;
+    }
+}
+</style>
+{% endblock %}
